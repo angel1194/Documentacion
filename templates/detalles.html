@@ -1,0 +1,131 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block contenido %}
+{% endblock contenido %}
+
+{% block busqueda %}
+<div class="row">
+	<div class="col-lg-6">
+		<h2 class="mb-2 ">  <i class="fa fa-laptop" aria-hidden="true"></i> {{detail.marca}} <span  class="span-cont"> {{detail.modelo}} </span> </h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="service-item mb-5" data-aos="fade-left" >
+			<i class="fas fa-memory"></i>
+			<h4 class="my-3">Ranuras</h4>
+				<p>{{detail.ranuras}}</p>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="service-item mb-5" data-aos="fade-left"  data-aos-delay="450">
+			<i class="fas fa-tachometer-alt"></i>
+			<h4 class="my-3">Frecuencia/Velocdiad</h4>
+			<p>{{detail.frecuencia}}</p>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="service-item mb-5 mb-lg-0" data-aos="fade-left"  data-aos-delay="750">
+			<i class="fa fa-hdd-o"></i>
+			<h4 class="my-3">Tipo HDD</h4>
+			<p>{{detail.HDD}}</p>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="service-item" data-aos="fade-left"  data-aos-delay="750">
+			<i class="fas fa-microchip"></i>
+			<h4 class="my-3">Tipo SSD</h4>
+			<p>{{detail.SSD}}</p>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="service-item mb-5" data-aos="fade-left"  data-aos-delay="950">
+			<i class="fas fa-clipboard"></i>
+			<h4 class="my-3">Notas</h4>
+			<p>{{detail.notas}}</p>
+		</div>
+	</div>
+
+</div>
+{% endblock busqueda %}
+
+{%block detalles%}
+<style>
+.a-product__information--title {
+    font-family: 'Baumans', cursive;
+    color: #333;
+    text-align-last: center;
+}
+section.o-product__detail {
+
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    display: flex;
+    align-items: stretch;
+}
+section.o-product__detail>.container {
+    display: grid;
+    grid-template-columns: 7.5fr 2px 2.5fr;
+    grid-template-rows: 1fr;
+    padding: 0;
+}
+section.o-product__detail .o-product__description {
+    padding: 6% 7%;
+    width: 100%;
+}
+section.o-product__detail>.container main {
+    display: grid;
+    grid-template-columns: 60% 48%;
+    grid-template-rows: 1fr;
+    padding: 0;
+    height: auto;
+}
+section.o-product__detail .o-product__description {
+    padding: 6% 7%;
+    width: 100%;
+    background: #fff;
+    height: fit-content;
+    box-shadow: 0 8px 15px #0062cc;
+    border-radius: 20px;
+}
+.span-cont{
+color: #0043ffba;
+}
+.list-group-item {
+    position: relative;
+    display: flex;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.positionP{
+    margin-top: 16px;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    font-family: 'Baumans', cursive;
+}
+</style>
+
+<div class="container gallery-container">
+                <div class="tz-gallery">
+                {% if detail.images_set.all%}
+                    <div class="row">
+                       {% for d in detail.images_set.all %}
+                        <div class="col-sm-6 col-md-4">
+                            <a class="lightbox" href="{{d.images.url}}">
+                                <img class="zoom"  src="{{d.images.url}}" alt="Park">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+               {%else %}
+                    <div class="alert alert-info">No hay imagenes documentadas aun!!</div>
+                {%endif%}
+                </div>
+</div>
+{%endblock detalles%}
