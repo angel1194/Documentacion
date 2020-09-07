@@ -23,9 +23,9 @@ TEMPLATES_DIR= os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '53+$m%^*2258nd-jn$tomb*(6nk$ov1@ju!-m@n1fp^jn$g(&l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','Amayo.pythonanywhere.com']
 
 
 # Application definition
